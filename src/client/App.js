@@ -10,6 +10,14 @@ class App extends Component {
     console.log(data);
   }
 
+  handleRemove = (id) => {
+    console.log('remove', id);
+  }
+
+  handleSelect = (id) => {
+    console.log('select', id);
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -21,13 +29,13 @@ class App extends Component {
                 <input className="form-control" placeholder="Name" />
               </div>
               <ul className="item-picker">
-                <BasicCard name="temp" dietaries={['v', 've']} id={1001} />
+                <BasicCard name="temp" dietaries={['v', 've']} id={1001} handleSelect={this.handleSelect} />
               </ul>
             </div>
             <div className="col-8">
               <h2>Menu preview</h2>
               <ul className="menu-preview">
-                <BasicCard name="temp" dietaries={['v', 've']} id={1001} withButton handleRemove={() => {}} />
+                <BasicCard name="temp" dietaries={['v', 've']} id={1002} withButton handleRemove={this.handleRemove} />
               </ul>
             </div>
           </div>
