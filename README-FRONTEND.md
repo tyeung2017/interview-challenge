@@ -29,15 +29,20 @@ We do not want you to:
 
 Please feel free to add additional notes in `README.md` outlining your thought process. Provide as much detail as you like (or none at all!). These will be used to create talking points during your interview.
 
+=====================================================================================
+
 ### Leo's note
 - better performance - using Google lighthouse to Audit
 - error handling - currently there is only console.log in a try catch
 - Since it mentioned for the input filter, server code can be modified; I assume this is for the server to return the filtered version of the list; however, I am going to filter the list in the front end, it is another way for the task
 
 ### Assumptions
-- After selecting the item into the menu, and clicking the "x" button, that item will be removed from the page
-==> this is not mentioned in the instruction, so after clicking the button there will be two possible cases : the one in the assumption above or that item will return to the side bar.
+- After selecting the item, the item will be in both sidebar and menu.
+==> this is not mentioned in the instruction, so after clicking the button there will be two possible cases : the one in the assumption above or that item will no longer exist in sidebar and will only appear in the menu
+- After selecting the item into the menu, and clicking the "x" button, that item will be removed from sidebar only
+==> this is not mentioned in the instruction, so after clicking the button there will be two possible cases : the one in the assumption above or that item will removed from the page, from both menu and sidebar.
 
+======================================================================================
 
 ## Part 2 - pairing with a Feedr developer (~1hr)
 
