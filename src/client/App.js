@@ -5,6 +5,16 @@ import BasicCard from './components/BasicCard';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+      filteredData: [],
+      menuData: [],
+    };
+  }
+
+
   async componentDidMount() {
     const { data } = await axios.get('/api/items');
     console.log(data);
