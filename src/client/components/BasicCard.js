@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BasicCard = ({
-  name, dietaries, id, withButton, handleRemove,
+  name, dietaries, id, withButton, handleRemove, handleSelect,
 }) => (
-  <li className="item">
+  <li className="item" onClick={() => handleSelect(id)} onKeyPress={() => handleSelect(id)} role="menuitem">
     <h2>{name}</h2>
     <p>
       {dietaries.map(dietary => <span className="dietary" key={`${id}-${dietary}`}>{dietary}</span>)}
@@ -21,9 +21,11 @@ BasicCard.propTypes = {
   id: PropTypes.number.isRequired,
   withButton: PropTypes.bool,
   handleRemove: PropTypes.func,
+  handleSelect: PropTypes.func,
 };
 
 BasicCard.defaultProps = {
   withButton: false,
   handleRemove: () => {},
+  handleSelect: () => {},
 };
