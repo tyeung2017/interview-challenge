@@ -16,8 +16,13 @@ class App extends Component {
 
 
   async componentDidMount() {
-    const { data } = await axios.get('/api/items');
-    console.log(data);
+    try {
+      const { data } = await axios.get('/api/items');
+      const { items } = data;
+      this.setState({ data: items }, () => console.log(this.state.data));
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   handleRemove = (id) => {
