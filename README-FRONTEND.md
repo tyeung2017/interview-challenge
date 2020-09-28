@@ -30,7 +30,6 @@ We do not want you to:
 Please feel free to add additional notes in `README.md` outlining your thought process. Provide as much detail as you like (or none at all!). These will be used to create talking points during your interview.
 
 ### Leo's note
-- better accessibility - using a11y package and Google lighthouse to audit, was mainly trying to reuse the html element in from the initial setup, which is not semantic html
 - better performance - using Google lighthouse to Audit
 - error handling - currently there is only console.log in a try catch
 - Since it mentioned for the input filter, server code can be modified; I assume this is for the server to return the filtered version of the list; however, I am going to filter the list in the front end, it is another way for the task
