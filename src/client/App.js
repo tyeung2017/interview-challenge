@@ -48,13 +48,23 @@ class App extends Component {
     }
   }
 
+  groupDietaries = (data) => {
+    const group = {};
+    data.forEach(({ dietaries }) => {
+      dietaries.forEach((dietary) => {
+        group[dietary] = group[dietary] + 1 || 1;
+      });
+    });
+
+    return group;
+  }
 
   render() {
     const { filteredData, menuData } = this.state;
-
+    const menuDietaries = this.groupDietaries(menuData);
     return (
       <div className="wrapper">
-        <Header ve={3} v={6} n={9} selectedTotal={6} />
+        <Header {...menuDietaries} selectedTotal={menuData.length} />
         <div className="container menu-builder">
           <div className="row">
             <div className="col-4">
