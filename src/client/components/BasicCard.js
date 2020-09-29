@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const BasicCard = ({
   name, dietaries, id, withButton, handleRemove, handleSelect,
 }) => (
-  <li className="item" onClick={() => handleSelect(id)} onKeyPress={() => handleSelect(id)} role="menuitem">
+  <li className="item" onClick={() => handleSelect({ id, name, dietaries })} onKeyPress={() => handleSelect({ id, name, dietaries })} role="menuitem">
     <h2>{name}</h2>
     <p>
       {dietaries.map(dietary => <span className="dietary" key={`${id}-${dietary}`}>{dietary}</span>)}
