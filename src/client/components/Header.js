@@ -14,7 +14,7 @@ const Header = ({
             items
           </span>
         </div>
-        <div className="col-6 menu-summary-right">
+        <div className="col-6 menu-summary-right" data-testid="dietaries">
           {Object.keys(props).map(key => (
             <Fragment key={`frag-${key}`}>
               {props[key]}
