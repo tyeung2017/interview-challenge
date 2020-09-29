@@ -9,6 +9,7 @@ class App extends Component {
     super();
     this.state = {
       data: [],
+      filteredData: [],
       menuData: [],
     };
   }
@@ -18,14 +19,17 @@ class App extends Component {
     try {
       const { data } = await axios.get('/api/items');
       const { items } = data;
-      this.setState({ data: items });
+      this.setState({ data: items, filteredData: items });
     } catch (e) {
       console.log(e);
     }
   }
 
   handleFilter = (e) => {
-    console.log(e.target.value);
+    const { data } = this.state;
+    const str = e.target.value;
+    const newFilterData = data.filter(({ name }) => name.includes(str));
+    this.setState({ filteredData: newFilterData });
   }
 
   handleRemove = (id) => {
@@ -46,7 +50,8 @@ class App extends Component {
 
 
   render() {
-    const { data, menuData } = this.state;
+    const { filteredData, menuData } = this.state;
+
     return (
       <div className="wrapper">
         <Header ve={3} v={6} n={9} selectedTotal={6} />
@@ -57,7 +62,15 @@ class App extends Component {
                 <input className="form-control" placeholder="Name" onChange={this.handleFilter} />
               </div>
               <ul className="item-picker">
-                <BasicCard name="temp" dietaries={['v', 've']} id={1001} handleSelect={this.handleSelect} />
+                {filteredData.map(({ name, id, dietaries }) => (
+                  <BasicCard
+                    key={`sidebar-${id}`}
+                    name={name}
+                    dietaries={dietaries}
+                    id={id}
+                    handleSelect={this.handleSelect}
+                  />
+                ))}
               </ul>
             </div>
             <div className="col-8">
