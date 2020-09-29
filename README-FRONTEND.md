@@ -29,6 +29,26 @@ We do not want you to:
 
 Please feel free to add additional notes in `README.md` outlining your thought process. Provide as much detail as you like (or none at all!). These will be used to create talking points during your interview.
 
+=====================================================================================
+
+### Leo's note
+- better performance - using Google lighthouse to Audit
+- error handling - currently there is only console.log in a try catch
+- Since it mentioned for the input filter, server code can be modified; I assume this is for the server to return the filtered version of the list; however, I am going to filter the list in the front end, it is another way for the task
+- depending on performance needs, throttle or debounce may be needed for input filtering
+- the search currently is case-sensitive, in UX point of view maybe it is easier for the user if it is case insensitive, depending on the scope; also meaningless characters like "&" should be filtered by some form of input validations and controlled input 
+- some UX enhancement can be done, like add a Spinner when the page is fetching info
+- Tests are mainly for testing the main behaviors of the app instead of going for a full coverage, as that should be good enough to showcase my ability to write tests
+
+### Assumptions
+- After selecting the item, the item will be in both sidebar and menu.
+==> this is not mentioned in the instruction, so after clicking the button there will be two possible cases : the one in the assumption above or that item will no longer exist in sidebar and will only appear in the menu
+- After selecting the item into the menu, and clicking the "x" button, that item will be removed from menu only
+==> this is not mentioned in the instruction, so after clicking the button there will be two possible cases : the one in the assumption above or that item will removed from the page, from both menu and sidebar.
+- Show the total number of each dietary type selected in the header 
+==> assuming dietary type which doesnt exist in the selected items will not be shown, instead of showing a zero.
+
+======================================================================================
 
 ## Part 2 - pairing with a Feedr developer (~1hr)
 
