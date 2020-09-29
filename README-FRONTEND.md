@@ -32,7 +32,7 @@ Please feel free to add additional notes in `README.md` outlining your thought p
 =====================================================================================
 
 ### Leo's note
-- better performance - using Google lighthouse to Audit
+- for better performance - using Google lighthouse should be used to audit
 - error handling - currently there is only console.log in a try catch
 - Since it mentioned for the input filter, server code can be modified; I assume this is for the server to return the filtered version of the list; however, I am going to filter the list in the front end, it is another way for the task
 - depending on performance needs, throttle or debounce may be needed for input filtering
