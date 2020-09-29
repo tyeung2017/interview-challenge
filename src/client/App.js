@@ -9,7 +9,6 @@ class App extends Component {
     super();
     this.state = {
       data: [],
-      filteredData: [],
       menuData: [],
     };
   }
@@ -19,19 +18,30 @@ class App extends Component {
     try {
       const { data } = await axios.get('/api/items');
       const { items } = data;
-      this.setState({ data: items }, () => console.log(this.state.data));
+      this.setState({ data: items });
     } catch (e) {
       console.log(e);
     }
+  }
+
+  handleFilter = (e) => {
+    console.log(e.target.value);
   }
 
   handleRemove = (id) => {
     console.log('remove', id);
   }
 
-  handleSelect = (id) => {
-    console.log('select', id);
+  handleSelect = (item) => {
+    const { id } = item;
+    const { menuData } = this.state;
+    const found = menuData.some(menuItem => menuItem.id === id);
+    if (!found) {
+      const newMenuData = menuData.concat(item);
+      this.setState({ menuData: newMenuData });
+    }
   }
+
 
   render() {
     return (
@@ -41,7 +51,7 @@ class App extends Component {
           <div className="row">
             <div className="col-4">
               <div className="filters">
-                <input className="form-control" placeholder="Name" />
+                <input className="form-control" placeholder="Name" onChange={this.handleFilter} />
               </div>
               <ul className="item-picker">
                 <BasicCard name="temp" dietaries={['v', 've']} id={1001} handleSelect={this.handleSelect} />
