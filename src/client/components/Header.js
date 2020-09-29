@@ -16,9 +16,9 @@ const Header = ({
         </div>
         <div className="col-6 menu-summary-right">
           {Object.keys(props).map(key => (
-            <Fragment>
+            <Fragment key={`frag-${key}`}>
               {props[key]}
-              <span className="dietary">{key}</span>
+              <span className="dietary" key={key}>{key}</span>
             </Fragment>
           ))}
         </div>
