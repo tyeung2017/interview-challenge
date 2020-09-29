@@ -29,7 +29,9 @@ class App extends Component {
   }
 
   handleRemove = (id) => {
-    console.log('remove', id);
+    const { menuData } = this.state;
+    const newMenuData = menuData.filter(menuItem => menuItem.id !== id);
+    this.setState({ menuData: newMenuData });
   }
 
   handleSelect = (item) => {
@@ -44,6 +46,7 @@ class App extends Component {
 
 
   render() {
+    const { data, menuData } = this.state;
     return (
       <div className="wrapper">
         <Header ve={3} v={6} n={9} selectedTotal={6} />
@@ -60,7 +63,16 @@ class App extends Component {
             <div className="col-8">
               <h2>Menu preview</h2>
               <ul className="menu-preview">
-                <BasicCard name="temp" dietaries={['v', 've']} id={1002} withButton handleRemove={this.handleRemove} />
+                {menuData.map(({ name, id, dietaries }) => (
+                  <BasicCard
+                    key={`menu-${id}`}
+                    name={name}
+                    dietaries={dietaries}
+                    id={id}
+                    withButton
+                    handleRemove={this.handleRemove}
+                  />
+                ))}
               </ul>
             </div>
           </div>
