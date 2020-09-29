@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 const Header = ({
-  ve, v, n, selectedTotal,
+  selectedTotal, ...props
 }) => (
   <div className="menu-summary">
     <div className="container">
@@ -15,15 +15,12 @@ const Header = ({
           </span>
         </div>
         <div className="col-6 menu-summary-right">
-          {ve}
-          {' '}
-          <span className="dietary">ve</span>
-          {v}
-          {' '}
-          <span className="dietary">v</span>
-          {n}
-          {' '}
-          <span className="dietary">n!</span>
+          {Object.keys(props).map(key => (
+            <Fragment>
+              {props[key]}
+              <span className="dietary">{key}</span>
+            </Fragment>
+          ))}
         </div>
       </div>
     </div>
@@ -33,8 +30,5 @@ const Header = ({
 export default Header;
 
 Header.propTypes = {
-  ve: PropTypes.number.isRequired,
-  v: PropTypes.number.isRequired,
-  n: PropTypes.number.isRequired,
   selectedTotal: PropTypes.number.isRequired,
 };
